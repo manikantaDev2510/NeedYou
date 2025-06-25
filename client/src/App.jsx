@@ -5,13 +5,13 @@ import { useDispatch } from "react-redux";
 
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
-import fetchUserDetails from "./utils/fetchUSerDetails.js";
 import { setUserDetails } from "./store/userSlice.js";
 import SummaryApi from "./common/SummaryApi.js";
 import Axios from "./utils/Axios.js";
 import { setAllCategory, setAllSubCategory, setLoadingCategory } from "./store/productSlice.js";
 import GlobalProvider from "./provider/GlobalProvider.jsx";
 import CartMobileLink from "./components/CartMobile.jsx";
+import fetchUserDetails from "./utils/fetchUserDetails.js";
 
 export default function App() {
   const dispatch = useDispatch();
