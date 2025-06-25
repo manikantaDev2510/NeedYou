@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 import Axios from "../utils/Axios";
 import AxiosToastError from "../utils/AxiosToastError";
-import fetchUserDetails from "../utils/fetchUserDetails";
+import fetchUserDetails from "../utils/fetchuserdetails";
 
 import SummaryApi from "../common/SummaryApi";
 
