@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+html{
+  scroll-behavior: smooth;
+}
+/* Footer */
+/* Define your custom color utility classes manually */
+.text-primary-100 {
+  color: #ffc929;
+}
+
+.text-primary-200 {
+  color: #ffbf00;
+}
+
+.text-secondary-100 {
+  color: #0b1a78;
+}
+
+.text-secondary-200 {
+  color: #00b050;
+}
+
+.hover\:text-primary-100:hover {
+  color: #ffc929;
+}
+
+.scrollbar-none::-webkit-scrollbar{
+  display: none;
+}
