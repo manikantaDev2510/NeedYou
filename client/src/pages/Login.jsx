@@ -4,9 +4,9 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import Axios from "../utils/Axios";
-import AxiosToastError from "../utils/AxiosToastError";
-import fetchUSerDetails from "../utils/fetchUSerDetails";
+import Axios from "../utils/Axios.js";
+import AxiosToastError from "../utils/AxiosToastError.js";
+import fetchUserDetails from "../utils/fetchUserDetails.js";
 
 import SummaryApi from "../common/SummaryApi";
 
@@ -50,7 +50,7 @@ export default function Login() {
         localStorage.setItem("accesstoken", response.data.data.accesstoken);
         localStorage.setItem("refreshToken", response.data.data.refreshToken);
 
-        const userDetails = await fetchUSerDetails();
+        const userDetails = await fetchUserDetails();
         dispatch(setUserDetails(userDetails.data));
 
         setData({ email: "", password: "" });
