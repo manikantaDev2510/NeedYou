@@ -55,28 +55,59 @@ export const addToCartItemController = async (request, response) => {
     }
 }
 
+// export const getCartItemController = async (request, response) => {
+//     try {
+//         const userId = request.userId
+
+//         const cartItem = await CartProductModel.find({
+//             userId: userId
+//         }).populate('productId')
+
+//         return response.json({
+//             data: cartItem,
+//             error: false,
+//             success: true
+//         })
+
+//     } catch (error) {
+//         return response.status(500).json({
+//             message: error.message || error,
+//             error: true,
+//             success: false
+//         })
+//     }
+// }
+
 export const getCartItemController = async (request, response) => {
     try {
-        const userId = request.userId
+        const userId = request.userId;
 
-        const cartItem = await CartProductModel.find({
-            userId: userId
-        }).populate('productId')
+        // Get cart items
+        const cartItems = await CartProductModel.find({ userId: userId }).populate('productId');
+
+        // Split into valid and invalid
+        const validItems = cartItems.filter(item => item.productId);
+        const invalidItems = cartItems.filter(item => !item.productId);
+
+        // Delete invalid items from DB
+        if (invalidItems.length > 0) {
+            const idsToDelete = invalidItems.map(item => item._id);
+            await CartProductModel.deleteMany({ _id: { $in: idsToDelete } });
+        }
 
         return response.json({
-            data: cartItem,
+            data: validItems,
             error: false,
             success: true
-        })
-
+        });
     } catch (error) {
         return response.status(500).json({
             message: error.message || error,
             error: true,
             success: false
-        })
+        });
     }
-}
+};
 
 export const updateCartItemQtyController = async (request, response) => {
     try {
@@ -142,3 +173,6 @@ export const deleteCartItemQtyController = async (request, response) => {
         })
     }
 }
+
+
+

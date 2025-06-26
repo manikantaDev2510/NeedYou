@@ -46,17 +46,18 @@ export default function AddToCartButton({ data }) {
 
   }
 
-  //checking this item in cart or not
   useEffect(() => {
-    const checkingitem = cartItem.some(item => item?.productId?._id === data._id);
+    const validItems = cartItem.filter(
+      item => item && item?.productId && item?.productId?._id
+    );
 
-    setIsAvailableCart(checkingitem)
+    const checkingitem = validItems.some(item => item.productId._id === data._id);
+    setIsAvailableCart(checkingitem);
 
-    const product = cartItem.find(item => item?.productId?._id === data._id);
-    setQty(product?.quantity)
-    setCartItemsDetails(product)
-  }, [data, cartItem])
-
+    const product = validItems.find(item => item.productId._id === data._id);
+    setQty(product?.quantity || 0);
+    setCartItemsDetails(product || null);
+  }, [data, cartItem]);
 
   const increaseQty = async (e) => {
     e.preventDefault()
