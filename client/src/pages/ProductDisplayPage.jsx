@@ -37,6 +37,7 @@ export default function ProductDisplayPage() {
   });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const imageContainerRef = useRef();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchProductDetails();
@@ -44,6 +45,7 @@ export default function ProductDisplayPage() {
 
   const fetchProductDetails = async () => {
     try {
+      setLoading(true);
       const response = await Axios({
         ...SummaryApi.getProductDetails,
         data: { productId },
@@ -53,11 +55,15 @@ export default function ProductDisplayPage() {
       }
     } catch (error) {
       AxiosToastError(error);
+    } finally {
+      setLoading(false);
     }
   };
+
   const handleScrollRight = () => {
     imageContainerRef.current.scrollLeft += 100;
   };
+
   const handleScrollLeft = () => {
     imageContainerRef.current.scrollLeft -= 100;
   };
@@ -214,7 +220,6 @@ export default function ProductDisplayPage() {
   );
 }
 
-// ================= Subcomponents =================
 const InfoBlock = ({ title, content }) => (
   <div>
     <p className="font-semibold">{title}</p>
