@@ -55,29 +55,6 @@ export const addToCartItemController = async (request, response) => {
     }
 }
 
-// export const getCartItemController = async (request, response) => {
-//     try {
-//         const userId = request.userId
-
-//         const cartItem = await CartProductModel.find({
-//             userId: userId
-//         }).populate('productId')
-
-//         return response.json({
-//             data: cartItem,
-//             error: false,
-//             success: true
-//         })
-
-//     } catch (error) {
-//         return response.status(500).json({
-//             message: error.message || error,
-//             error: true,
-//             success: false
-//         })
-//     }
-// }
-
 export const getCartItemController = async (request, response) => {
     try {
         const userId = request.userId;
@@ -173,6 +150,3 @@ export const deleteCartItemQtyController = async (request, response) => {
         })
     }
 }
-
-
-

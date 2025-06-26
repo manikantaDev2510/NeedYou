@@ -11,14 +11,14 @@ import Axios from "./utils/Axios.js";
 import { setAllCategory, setAllSubCategory, setLoadingCategory } from "./store/productSlice.js";
 import GlobalProvider from "./provider/GlobalProvider.jsx";
 import CartMobileLink from "./components/CartMobile.jsx";
-import fetchUSerDetails from "./utils/fetchUSerDetails.js";
+import fetchUserDetails from "./utils/fetchUserDetails.js";
 
 export default function App() {
   const dispatch = useDispatch();
   const location = useLocation()
 
   const fetchUser = async () => {
-    const userData = await fetchUSerDetails();
+    const userData = await fetchUserDetails();
     dispatch(setUserDetails(userData.data));
   };
 
