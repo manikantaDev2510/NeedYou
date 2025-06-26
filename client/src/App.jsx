@@ -5,22 +5,22 @@ import { useDispatch } from "react-redux";
 
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
-// import { setUserDetails } from "./store/userSlice.js";
+import { setUserDetails } from "./store/userSlice.js";
 import SummaryApi from "./common/SummaryApi.js";
 import Axios from "./utils/Axios.js";
 import { setAllCategory, setAllSubCategory, setLoadingCategory } from "./store/productSlice.js";
 import GlobalProvider from "./provider/GlobalProvider.jsx";
 import CartMobileLink from "./components/CartMobile.jsx";
-// import fetchUserDetails from "./utils/fetchUserDetails.js";
+import fetchUserDetails from "./utils/fetchUserDetails.js";
 
 export default function App() {
   const dispatch = useDispatch();
   const location = useLocation()
 
-  // const fetchUser = async () => {
-  //   const userData = await fetchUserDetails();
-  //   dispatch(setUserDetails(userData.data));
-  // };
+  const fetchUser = async () => {
+    const userData = await fetchUserDetails();
+    dispatch(setUserDetails(userData.data));
+  };
 
   const fetchCategory = async () => {
     try {
