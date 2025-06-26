@@ -30,12 +30,13 @@ app.use(helmet({
 
 const PORT = ENV_VARS.PORT
 
-// app.get("/", (request, response) => {
-//     ///server to client
-//     response.json({
-//         message: "Server is running " + PORT
-//     })
-// })
+app.get('/', (req, res) => {
+    res.json({
+        message: `✅ Server is running on port ${PORT}`
+    });
+});
+
+
 
 app.use('/api/user', userRouter)
 app.use("/api/category", categoryRouter)
