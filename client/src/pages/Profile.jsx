@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 import AxiosToastError from "../utils/AxiosToastError.js";
 import Axios from "../utils/Axios.js";
-import fetchUserDetails from "../utils/fetchUSerDetails.js";
+import fetchUserDetails from "../utils/fetchUserDetails.js";
 
 import UserProfileAvatarEdit from "../components/UserProfileAvatarEdit.jsx";
 
