@@ -63,7 +63,7 @@ export default function Register() {
 
   return (
     <div className="relative z-10 w-full max-w-md bg-white bg-opacity-90 shadow-xl rounded-xl p-6 sm:p-8">
-      <h2 className="text-xl font-semibold text-center mb-4">Welcome to Binkeyit</h2>
+      <h2 className="text-xl font-semibold text-center mb-4">Welcome to NeedYou</h2>
 
       <form className="space-y-5" onSubmit={handleSubmit}>
         {/* Name */}

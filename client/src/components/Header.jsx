@@ -5,7 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GiShoppingCart } from "react-icons/gi";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 
-import logo from "../assets/logo.png";
 import Search from "./Search.jsx";
 import useMobile from "../hooks/useMobile.jsx";
 import UserMenu from "./UserMenu.jsx";
@@ -63,23 +62,20 @@ export default function Header() {
             {
                 !(isSearchPage && isMobile) && (
                     <div className='container mx-auto flex items-center px-2 justify-between'>
-                        {/**logo */}
-                        <div className='h-full'>
-                            <Link to={"/"} className='h-full flex justify-center items-center'>
-                                <img
-                                    src={logo}
-                                    width={170}
-                                    height={60}
-                                    alt='logo'
-                                    className='hidden lg:block'
-                                />
-                                <img
-                                    src={logo}
-                                    width={120}
-                                    height={60}
-                                    alt='logo'
-                                    className='lg:hidden'
-                                />
+
+                        <div className="h-full">
+                            <Link to="/" className="h-full flex justify-center items-center">
+                                {/* Large screens */}
+                                <div className="hidden lg:flex items-baseline space-x-1 pl-10">
+                                    <span className="text-6xl font-extrabold tracking-tight text-[#f4c143]">Need</span>
+                                    <span className="text-6xl font-extrabold tracking-tight text-[#4e953f]">You</span>
+                                </div>
+
+                                {/* Small screens */}
+                                <span className="lg:hidden text-2xl font-extrabold tracking-tight pl-4">
+                                    <span className="text-[#f4c143]">Need</span>
+                                    <span className="text-[#4e953f]">You</span>
+                                </span>
                             </Link>
                         </div>
 
