@@ -41,6 +41,7 @@ export default function ProductDisplayPage() {
 
   useEffect(() => {
     fetchProductDetails();
+    window.scrollTo(0, 0);
   }, [productId]);
 
   const fetchProductDetails = async () => {

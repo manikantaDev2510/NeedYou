@@ -39,7 +39,7 @@ export default function CategoryWiseProductDisplay({ id, name }) {
   }
 
   useEffect(() => {
-    fetchCategoryWiseProduct()
+    fetchCategoryWiseProduct();
   }, [])
 
   const handleScrollRight = () => {
