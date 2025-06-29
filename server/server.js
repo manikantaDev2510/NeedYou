@@ -1,7 +1,5 @@
 import express from 'express'
 import cors from 'cors'
-// import dotenv from 'dotenv'
-// dotenv.config()
 import cookieParser from 'cookie-parser'
 import morgan from 'morgan'
 import helmet from 'helmet'
@@ -35,8 +33,6 @@ app.get('/', (req, res) => {
         message: `✅ Server is running on port ${PORT}`
     });
 });
-
-
 
 app.use('/api/user', userRouter)
 app.use("/api/category", categoryRouter)
