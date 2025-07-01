@@ -13,15 +13,15 @@ import noDataImage from '../assets/nothing here yet.webp';
 export default function SearchPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-
   const loadingSkeletons = new Array(10).fill(null);
   const location = useLocation();
-  const searchText = location?.search?.slice(3); // Extract search query from URL
 
-  // Fetch products based on search text and page
+  // ✅ Safely extract search query from URL
+  const queryParams = new URLSearchParams(location.search);
+  const searchText = queryParams.get("q") || "";
+
   const fetchProducts = async () => {
     try {
       setLoading(true);
@@ -49,7 +49,7 @@ export default function SearchPage() {
   };
 
   useEffect(() => {
-    setPage(1); // reset to first page on search change
+    setPage(1);
   }, [searchText]);
 
   useEffect(() => {
@@ -83,7 +83,6 @@ export default function SearchPage() {
               />
             ))}
 
-            {/* Loading placeholders */}
             {loading &&
               loadingSkeletons.map((_, index) => (
                 <CardLoading key={`loading_skeleton_${index}`} />
@@ -91,7 +90,6 @@ export default function SearchPage() {
           </div>
         </InfiniteScroll>
 
-        {/* No data fallback */}
         {!products.length && !loading && (
           <div className='flex flex-col items-center justify-center text-center mt-10'>
             <img
@@ -105,4 +103,4 @@ export default function SearchPage() {
       </div>
     </section>
   );
-};
+}

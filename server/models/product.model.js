@@ -52,8 +52,6 @@ const productSchema = new mongoose.Schema({
     },
 
 
-
-
     type: { type: String, default: "" },
     shelfLife: { type: String, default: "" },
     countryOfOrigin: { type: String, default: "" },
@@ -64,6 +62,11 @@ const productSchema = new mongoose.Schema({
 
 }, {
     timestamps: true
+});
+
+productSchema.index({
+    name: "text",
+    description: "text"
 });
 
 // ✅ Create and export the User model
