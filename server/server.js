@@ -16,17 +16,18 @@ import orderRouter from './routes/order.route.js'
 
 
 const app = express()
-const allowedOrigins = [ENV_VARS.FRONTEND_URL, "https://needyou-orpin.vercel.app"];
+
+const allowedOrigins = ENV_VARS.FRONTEND_URL.split(',');
 
 app.use(cors({
+    credentials: true,
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
-            callback(new Error("Not allowed by CORS"));
+            callback(new Error('Not allowed by CORS'));
         }
-    },
-    credentials: true
+    }
 }));
 
 // app.use(cors({
