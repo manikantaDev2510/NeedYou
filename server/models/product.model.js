@@ -1,73 +1,67 @@
-// ✅ Import mongoose to define a MongoDB schema
 import mongoose from "mongoose";
 
-// ✅ Define the schema for the User collection
 const productSchema = new mongoose.Schema({
-    name: {
-        type: String,
+    name : {
+        type : String,
     },
-    image: {
-        type: Array,
-        default: []
+    image : {
+        type : Array,
+        default : []
     },
-    category: [
+    category : [
         {
-            type: mongoose.Schema.ObjectId,
-            ref: 'Category'
+            type : mongoose.Schema.ObjectId,
+            ref : 'category'
         }
     ],
-    subCategory: [
+    subCategory : [
         {
-            type: mongoose.Schema.ObjectId,
-            ref: 'SubCategory'
+            type : mongoose.Schema.ObjectId,
+            ref : 'subCategory'
         }
     ],
-    unit: {
-        type: String,
-        default: ""
+    unit : {
+        type : String,
+        default : ""
     },
-    stock: {
-        type: Number,
-        default: null
+    stock : {
+        type : Number,
+        default : null
     },
-    price: {
-        type: Number,
-        defualt: null
+    price : {
+        type : Number,
+        defualt : null
     },
-    discount: {
-        type: Number,
-        default: null
+    discount : {
+        type : Number,
+        default : null
     },
-    description: {
-        type: String,
-        default: ""
+    description : {
+        type : String,
+        default : ""
     },
-    more_details: {
-        type: Object,
-        default: {}
+    more_details : {
+        type : Object,
+        default : {}
     },
-    publish: {
-        type: Boolean,
-        default: true
-    },
+    publish : {
+        type : Boolean,
+        default : true
+    }
+},{
+    timestamps : true
+})
 
-
-    type: { type: String, default: "" },
-    shelfLife: { type: String, default: "" },
-    countryOfOrigin: { type: String, default: "" },
-    fssaiLicense: { type: String, default: "" },
-    customerCareDetails: { type: String, default: "" },
-    returnPolicy: { type: String, default: "" },
-    expiryDate: { type: String, default: "" },
-
-}, {
-    timestamps: true
-});
-
+//create a text index
 productSchema.index({
-    name: "text",
-    description: "text"
-});
+    name  : "text",
+    description : 'text'
+},{
+    name : 10,
+    description : 5
+})
 
-// ✅ Create and export the User model
-export const ProductModel = mongoose.model("Product", productSchema);
+
+const ProductModel = mongoose.model('product',productSchema)
+
+export default ProductModel

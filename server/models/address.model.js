@@ -1,9 +1,7 @@
-// ✅ Import mongoose to define a MongoDB schema
 import mongoose from "mongoose";
 
-// ✅ Define the schema for the User collection
 const addressSchema = new mongoose.Schema({
-        address_line : {
+    address_line : {
         type : String,
         default : ""
     },
@@ -16,10 +14,10 @@ const addressSchema = new mongoose.Schema({
         default : ""
     },
     pincode : {
-        type : Number,
+        type : String
     },
     country : {
-        type : String,
+        type : String
     },
     mobile : {
         type : Number,
@@ -33,10 +31,10 @@ const addressSchema = new mongoose.Schema({
         type : mongoose.Schema.ObjectId,
         default : ""
     }
-
 },{
     timestamps : true
-});
+})
 
-// ✅ Create and export the User model
-export const AddressModel = mongoose.model("Address", addressSchema);
+const AddressModel = mongoose.model('address',addressSchema)
+
+export default AddressModel

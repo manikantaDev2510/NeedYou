@@ -1,81 +1,79 @@
-// ✅ Import mongoose to define a MongoDB schema
 import mongoose from "mongoose";
 
-// ✅ Define the schema for the User collection
 const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, "Provide name"],
+    name : {
+        type : String,
+        required : [true,"Provide name"]
     },
-    email: {
-        type: String,
-        required: [true, "Provide email"],
-        unique: true,
+    email : {
+        type : String,
+        required : [true, "provide email"],
+        unique : true
     },
-    password: {
-        type: String,
-        required: [true, "Provide Password"],
+    password : {
+        type : String,
+        required : [true, "provide password"]
     },
-    avatar: {
-        type: String,
-        default: ""
+    avatar : {
+        type : String,
+        default : ""
     },
-    mobile: {
-        type: Number,
-        default: null
+    mobile : {
+        type : Number,
+        default : null
     },
-    refresh_token: {
-        type: String,
-        default: ""
+    refresh_token : {
+        type : String,
+        default : ""
     },
-    verify_email: {
-        type: Boolean,
-        default: false
+    verify_email : {
+        type : Boolean,
+        default : false
     },
-    last_login_date: {
-        type: Date,
-        default: ""
+    last_login_date : {
+        type : Date,
+        default : ""
     },
-    status: {
-        type: String,
-        enum: ["Active", "Inactive", "Suspended"],
-        default: "Active"
+    status : {
+        type : String,
+        enum : ["Active","Inactive","Suspended"],
+        default : "Active"
     },
-    address_details: [
+    address_details : [
         {
-            type: mongoose.Schema.ObjectId,
-            ref: 'Address'
+            type : mongoose.Schema.ObjectId,
+            ref : 'address'
         }
     ],
-    shopping_cart: [
+    shopping_cart : [
         {
-            type: mongoose.Schema.ObjectId,
-            ref: 'CartProduct'
+            type : mongoose.Schema.ObjectId,
+            ref : 'cartProduct'
         }
     ],
-    orderHistory: [
+    orderHistory : [
         {
-            type: mongoose.Schema.ObjectId,
-            ref: 'Order'
+            type : mongoose.Schema.ObjectId,
+            ref : 'order'
         }
     ],
-    forgot_password_otp: {
-        type: String,
-        default: null
+    forgot_password_otp : {
+        type : String,
+        default : null
     },
-    forgot_password_expiry: {
-        type: Date,
-        default: ""
+    forgot_password_expiry : {
+        type : Date,
+        default : ""
     },
-    role: {
-        type: String,
-        enum: ['ADMIN', "USER"],
-        default: "USER"
+    role : {
+        type : String,
+        enum : ['ADMIN',"USER"],
+        default : "USER"
     }
-}, {
-    timestamps: true
-});
+},{
+    timestamps : true
+})
 
-// ✅ Create and export the User model
-// NOTE: Mongoose automatically converts "User" to "users" in the DB
-export const UserModel = mongoose.model("User", userSchema);
+const UserModel = mongoose.model("User",userSchema)
+
+export default UserModel
