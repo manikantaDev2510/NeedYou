@@ -16,11 +16,25 @@ import orderRouter from './routes/order.route.js'
 
 const app = express()
 
-// ✅ Middleware
+// // ✅ Middleware
+// app.use(cors({
+//     credentials: true,
+//     origin: ENV_VARS.FRONTEND_URL
+// }))
+const allowedOrigins = ENV_VARS.FRONTEND_URL.split(",");
+
 app.use(cors({
-    credentials: true,
-    origin: ENV_VARS.FRONTEND_URL
-}))
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps, curl, Postman)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        } else {
+            return callback(new Error("Not allowed by CORS: " + origin));
+        }
+    },
+    credentials: true
+}));
 
 app.use(express.json())
 app.use(cookieParser())
