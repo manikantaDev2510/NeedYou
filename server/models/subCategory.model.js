@@ -1,24 +1,26 @@
+// ✅ Import mongoose to define a MongoDB schema
 import mongoose from "mongoose";
 
+// ✅ Define the schema for the User collection
 const subCategorySchema = new mongoose.Schema({
-    name : {
-        type : String,
-        default : ""
+    name: {
+        type: String,
+        default: ""
     },
-    image : {
-        type : String,
-        default : ""
+    image: {
+        type: String,
+        default: ""
     },
-    category : [
+    category: [
         {
-            type : mongoose.Schema.ObjectId,
-            ref : "category"
+            type: mongoose.Schema.ObjectId,
+            ref: "Category"
         }
     ]
-},{
-    timestamps : true
-})
 
-const SubCategoryModel = mongoose.model('subCategory',subCategorySchema)
+}, {
+    timestamps: true
+});
 
-export default SubCategoryModel
+// ✅ Create and export the User model
+export const SubCategoryModel = mongoose.model("SubCategory", subCategorySchema);

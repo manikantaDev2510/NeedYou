@@ -1,9 +1,11 @@
+// ✅ Import mongoose to define a MongoDB schema
 import mongoose from "mongoose";
 
+// ✅ Define the schema for the User collection
 const cartProductSchema = new mongoose.Schema({
-    productId : {
+        productId : {
         type : mongoose.Schema.ObjectId,
-        ref : 'product'
+        ref : 'Product'
     },
     quantity : {
         type : Number,
@@ -15,8 +17,7 @@ const cartProductSchema = new mongoose.Schema({
     }
 },{
     timestamps : true
-})
+});
 
-const CartProductModel = mongoose.model('cartProduct',cartProductSchema)
-
-export default CartProductModel
+// ✅ Create and export the User model
+export const CartProductModel = mongoose.model("CartProduct", cartProductSchema);
